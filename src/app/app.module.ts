@@ -4,8 +4,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { QuillModule } from 'ngx-quill';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -16,7 +16,10 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     EditorModule,
     QuillModule.forRoot(),
-    FormsModule
+    FormsModule,
+    MatToolbarModule,
+    MatButtonToggleModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

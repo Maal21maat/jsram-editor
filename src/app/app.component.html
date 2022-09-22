@@ -1,22 +1,17 @@
-<nav class="navbar">
-  <h1>{{title}}</h1> 
-</nav>
+
+<mat-toolbar-row>
+  <span>
+    <h1>{{title}}</h1>
+    <mat-button-toggle value="saveButton" (click)="myClickFunction($event)">
+      Save
+    </mat-button-toggle> 
+  </span>
+</mat-toolbar-row>
 
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <quill-editor [styles]="{height: '200px'}" (onEditorChanged)="changedEditor($event)"></quill-editor>
-    </div>
-  </div>
-
-  <div class="button" >
-    <button >Save</button>
-  </div>
-
-  <div class="row">
-    <h3> Output </h3>
-    <div class="col-md-8 bg light">
-      <p [innerHtml]= "editorText"> </p>
     </div>
   </div>
 </div>
