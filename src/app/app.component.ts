@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill'
+import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
+
 
 @Component({
   selector: 'app-root',
@@ -15,4 +16,10 @@ export class AppComponent {
     this.editorText = event['editor']['root']['innerHTML'];
   }
 
+}
+
+export class InputBoxesComponent {
+  onClick(){
+    console.log("hej");
+  }
 }
