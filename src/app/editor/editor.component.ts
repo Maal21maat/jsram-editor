@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { Editor } from '../editor';
 import { EDITORS } from '../mock-editors';
 
@@ -10,9 +11,19 @@ import { EDITORS } from '../mock-editors';
 
 export class EditorComponent implements OnInit {
 
+  editorText = '';
   editors = EDITORS;
   selectedEditor?: Editor;
 
+  changedEditor(event: EditorChangeContent | EditorChangeSelection){
+    //console.log(' editor got changes ', event);
+    this.editorText = event['editor']['root']['innerText'];
+  }
+
+  myClickFunction(event: Event) { 
+    //just added console.log which will display the event details in browser on click of the button.
+    console.log(this.editorText);
+ }
 
   constructor() { }
 

@@ -1,6 +1,18 @@
-<p>...</p>
-<p>editor is getting its on module, soon.</p>
-<p>...</p>
+<mat-toolbar-row>
+  <span>
+    <mat-button-toggle value="saveButton" (click)="myClickFunction($event)">
+      Save
+    </mat-button-toggle> 
+  </span>
+</mat-toolbar-row>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <quill-editor [styles]="{height: '200px'}" (onEditorChanged)="changedEditor($event)"></quill-editor>
+    </div>
+  </div>
+</div>
 
 
 <h2>My Heroes</h2>
