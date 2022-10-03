@@ -1,0 +1,23 @@
+<p>...</p>
+<p>editor is getting its on module, soon.</p>
+<p>...</p>
+
+
+<h2>My Heroes</h2>
+<ul class="editors">
+  <li *ngFor="let editor of editors">
+    <button [class.selected]="editor === selectedEditor" type="button" (click)="onSelect(editor)">
+      <span class="badge">{{editor.id}}</span>
+      <span class="name">{{editor.name}}</span>
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="selectedEditor">
+  <h2>{{selectedEditor.name | uppercase}} Details</h2>
+  <div>id: {{selectedEditor.id}}</div>
+  <div>
+    <label for="editor-name">Hero name: </label>
+    <input id="editor-name" [(ngModel)]="selectedEditor.name" placeholder="name">
+  </div>
+</div>
