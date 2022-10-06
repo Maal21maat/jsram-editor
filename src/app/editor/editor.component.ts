@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import { Editor } from '../editor';
-import { EDITORS } from '../mock-editors';
+// import { EDITORS } from '../mock-editors';
+import { EditorService } from '../editor.service';
+import { MessageService } from '../message.service';
+
+
+
 
 @Component({
   selector: 'app-editor',
@@ -9,11 +14,14 @@ import { EDITORS } from '../mock-editors';
   styleUrls: ['./editor.component.css']
 })
 
+
 export class EditorComponent implements OnInit {
 
   editorText = '';
-  editors = EDITORS;
+  //editors = EDITORS;
   selectedEditor?: Editor;
+
+  editors: Editor[] = [];
 
   changedEditor(event: EditorChangeContent | EditorChangeSelection){
     //console.log(' editor got changes ', event);
@@ -23,15 +31,22 @@ export class EditorComponent implements OnInit {
   myClickFunction(event: Event) { 
     //just added console.log which will display the event details in browser on click of the button.
     console.log(this.editorText);
- }
+  }
 
-  constructor() { }
+  constructor(private editorService: EditorService, private messageService: MessageService) { }
 
   ngOnInit(): void {
+    this.getEditors();
   }
 
   onSelect(editor: Editor) : void {
     this.selectedEditor = editor;
+    this.messageService.add(`EditorsComponent: Selected editor id=${editor._id}`);
+  }
+
+  getEditors(): void {
+    this.editorService.getEditors()
+      .subscribe(editors => this.editors = editors);
   }
 
 }

@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { QuillModule } from 'ngx-quill';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { EditorComponent } from './editor/editor.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MessagesComponent } from './messages/messages.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditorComponent
+    EditorComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import { EditorComponent } from './editor/editor.component';
     QuillModule.forRoot(),
     FormsModule,
     MatToolbarModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    HttpClientModule
 
   ],
   providers: [],

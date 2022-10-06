@@ -7,6 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'jsram-editor';
+  title = 'ME - My Editor';
 
 }

@@ -1,10 +1,4 @@
-<mat-toolbar-row>
-  <span>
-    <mat-button-toggle value="saveButton" (click)="myClickFunction($event)">
-      Save
-    </mat-button-toggle> 
-  </span>
-</mat-toolbar-row>
+
 
 <div class="container">
   <div class="row">
@@ -13,23 +7,38 @@
     </div>
   </div>
 </div>
-
-
-<h2>My Heroes</h2>
+<br>
+<br>
+<mat-toolbar-row>
+  <span>
+    <mat-button-toggle value="saveButton" (click)="myClickFunction($event)">
+      Save as New
+    </mat-button-toggle>
+    <mat-button-toggle value="saveButton">
+      Update document
+    </mat-button-toggle>
+  </span>
+</mat-toolbar-row>
+<br>
+<br>
+<br>
+<br>
+<h2>My Documents</h2>
 <ul class="editors">
   <li *ngFor="let editor of editors">
     <button [class.selected]="editor === selectedEditor" type="button" (click)="onSelect(editor)">
-      <span class="badge">{{editor.id}}</span>
+      <span class="badge">{{editor._id}}</span>
       <span class="name">{{editor.name}}</span>
+      <span class="name">{{editor.text}}</span>
     </button>
   </li>
 </ul>
 
 <div *ngIf="selectedEditor">
   <h2>{{selectedEditor.name | uppercase}} Details</h2>
-  <div>id: {{selectedEditor.id}}</div>
+  <div>id: {{selectedEditor._id}}</div>
   <div>
-    <label for="editor-name">Hero name: </label>
-    <input id="editor-name" [(ngModel)]="selectedEditor.name" placeholder="name">
+    <label for="editor-name">Text: </label>
+    <input id="editor-name" [(ngModel)]="selectedEditor.text" placeholder="text">
   </div>
 </div>

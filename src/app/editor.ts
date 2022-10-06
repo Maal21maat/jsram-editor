@@ -1,4 +1,5 @@
 export interface Editor {
-    id: number;
+    _id: number;
     name: string;
+    text: string;
 }
