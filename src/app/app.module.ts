@@ -8,14 +8,14 @@ import { QuillModule } from 'ngx-quill';
 import { AppComponent } from './app.component';
 import { EditorComponent } from './editor/editor.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MessagesComponent } from './messages/messages.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditorComponent,
-    MessagesComponent
+    EditorComponent
+
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
-import { Editor } from '../editor';
+import Quill from 'quill';
+import { HttpClient } from '@angular/common/http';
+// import { Editor } from '../editor';
 // import { EDITORS } from '../mock-editors';
-import { EditorService } from '../editor.service';
-import { MessageService } from '../message.service';
 
+export class Editor {
+  constructor(
+    public _id: number,
+    public name: string,
+    public text: string
+  ) {
+  }
+}
 
 
 
@@ -15,8 +23,49 @@ import { MessageService } from '../message.service';
 })
 
 
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit{
+  editors: Editor[] = [];
+  editorText = '';
+  editorName = '';
+  blurred = false
+  focused = false
 
+  created(event: Quill) {
+    // tslint:disable-next-line:no-console
+    console.log('editor-created', event)
+  }
+
+  changedEditor(event: EditorChangeContent | EditorChangeSelection) {
+    // tslint:disable-next-line:no-console
+    // console.log('editor-change', event)
+    this.editorText = event['editor']['root']['innerText'];
+  }
+
+  myClickFunction(event: Event) { 
+    //just added console.log which will display the event details in browser on click of the button.
+    console.log(this.editorText);
+  }
+
+
+  constructor(private httpClient: HttpClient) { }
+
+  ngOnInit(): void {
+    this.getEditors();
+  }
+
+  getEditors(){
+    this.httpClient.get<Editor[]>('http://localhost:1337/editdocs').subscribe(
+      response => {
+        console.log(response);
+        this.editors = response;
+      }
+    );
+  }
+
+
+}
+
+/**
   editorText = '';
   //editors = EDITORS;
   selectedEditor?: Editor;
@@ -45,8 +94,7 @@ export class EditorComponent implements OnInit {
   }
 
   getEditors(): void {
-    this.editorService.getEditors()
-      .subscribe(editors => this.editors = editors);
-  }
+    this.editorService.getEditors().subscribe(editors => this.editors = editors);
+      console.log(this.editors)
+  }*/
 
-}
